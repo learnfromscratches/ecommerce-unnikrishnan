@@ -1,0 +1,52 @@
+.mainView{
+    display: flex;
+    padding: 20px 120px;
+    justify-content: space-between;
+}
+.imageViewer{
+    width: 30%;
+}
+
+.productDesc{
+    width: 60%;
+}
+.productDetails{
+    padding: 50px;
+}
+.productDetails h3{
+    font-size: 24px;
+}
+.category{
+    display: flex;
+    margin-top: 20px;
+}
+.priceDetails span{
+    font-size: 20px;
+    font-family: pt-sans-caption, sans-serif;
+}
+.priceDetails{
+    margin-top: 20px;
+}
+.discount{
+    color: rgb(0, 103, 22);
+}
+.actualPrice{
+    text-decoration: line-through;
+    padding: 10px;
+}
+.discount{
+    padding-left: 20px;
+}
+.description{
+    color: rgb(92, 92, 92);
+    margin: 20px 0;
+}
+.description p{
+    line-height: 26px;
+    padding: 10px 0;
+}
+.userAction{
+    display: flex;
+    position: relative;
+    top: 20px;
+}

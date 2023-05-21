@@ -1,0 +1,27 @@
+.imageSelector{
+    display: flex;
+    margin: 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+.imageViewer{
+    padding: 30px;
+}
+.image{
+    object-fit: contain;
+    width: 100%;
+}
+.singleImage img{
+    width: 30%;
+    cursor: pointer;
+    height: 130px;
+    object-fit: contain;
+}
+.singleImage img:active{
+    border: 1px solid black;
+}
+.singleImage{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

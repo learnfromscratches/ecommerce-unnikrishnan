@@ -1,0 +1,12 @@
+.vendorLogin{
+    width: 400px;
+    height: 450px;
+    border: 1px solid green;
+    box-shadow: rgba(34, 237, 95, 0.505) 0px 3px 30px;
+    margin: 40px auto;
+    padding: 30px 40px;
+}
+.heading{
+    text-align: center;
+    padding: 20px;
+}

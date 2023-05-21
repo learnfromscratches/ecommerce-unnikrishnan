@@ -1,0 +1,30 @@
+.button{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    width: 120px;
+    height: 40px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 26px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.addToCArt{
+    position: absolute;
+    left: 150px;
+}
+.buyNow{
+    position: absolute;
+    left: 0;
+}
+.button:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.btnText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

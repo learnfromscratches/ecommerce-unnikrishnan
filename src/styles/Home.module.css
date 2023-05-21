@@ -1,0 +1,22 @@
+.promotionBanner{
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    margin-top: 5px;
+}
+.homeBanner{
+    object-fit: fill;
+}
+.homeCategory{
+    width: 87%;
+    margin: 15px;
+}
+.categoryChip{
+    display: flex;
+    margin: 10px;
+}
+.products{
+    display: flex;
+    margin: 40px 30px;
+    flex-wrap: wrap;
+}

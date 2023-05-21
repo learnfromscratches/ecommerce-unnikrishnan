@@ -1,0 +1,24 @@
+.products{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+}
+.filterPane{
+    width: 20%;
+    min-height: 80vh;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 10px;
+    padding: 15px 15px;
+}
+.productDisplay{
+    width: 79%;
+    min-height: 80vh;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 10px;
+    padding: 15px 15px;
+}
+.showProducts{
+    display: flex;
+    flex-wrap: wrap;
+}

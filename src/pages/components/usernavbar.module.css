@@ -1,0 +1,49 @@
+.userNavbar{
+    width: 100%;
+    height: 10vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    color: black;
+}
+.navLogo{
+    font-family: 'Ysabeau', sans-serif;
+    font-weight: 900;
+}
+.navIcon{
+    width: 35px;
+    height: 35px;
+}
+.navRight{
+    display: flex;
+    margin-right: 150px;
+}
+.navLeft{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.navRight span{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 0.2rem;
+    font-family: 'Ysabeau', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+.navRight a:hover{
+    color: rgb(0, 119, 255);
+    transition: all 0.5s;
+}
+.navRight a{
+    text-decoration: none; 
+    color: #000000;
+}
+.active{
+    color: rgb(0, 119, 255);
+}
