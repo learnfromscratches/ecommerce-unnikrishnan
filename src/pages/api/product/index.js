@@ -2,7 +2,6 @@ import { mockData } from "@/utils/mockdata";
 
 export default function handler(req, res) {
   let { category, brand } = req.query;
-  console.log(category);
 
   if (typeof category == "string") {
     category = [category];
@@ -10,20 +9,26 @@ export default function handler(req, res) {
   if (typeof brand == "string") {
     brand = [brand];
   }
-  console.log(category);
+
+  const lowCategory = category && category.map(item => item.toLowerCase());
+  const lowBrand = brand && brand.map(item => item.toLowerCase());
+
   if (category && brand) {
     const filtered = mockData.filter(item => {
-      return category.includes(item.category) && brand.includes(item.brand);
+      return (
+        lowCategory.includes(item.category.toLowerCase()) &&
+        lowBrand.includes(item.brand.toLowerCase())
+      );
     });
     res.status(200).json(filtered);
   } else if (category) {
     const filtered = mockData.filter(item => {
-      return category.includes(item.category);
+      return lowCategory.includes(item.category.toLowerCase());
     });
     res.status(200).json(filtered);
   } else if (brand) {
     const filtered = mockData.filter(item => {
-      return brand.includes(item.brand);
+      return lowBrand.includes(item.brand.toLowerCase());
     });
     res.status(200).json(filtered);
   } else {

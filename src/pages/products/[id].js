@@ -43,7 +43,7 @@ const ProductView = () => {
                         <div className={styles.priceDetails}>
                             <span className={styles.salesPrice}>{product.price}</span>
                             <span className={styles.actualPrice}>{product.actualPrice}</span>
-                            <span className={styles.discount}>23% off</span>
+                            <span className={styles.discount}>{`Save ₹${product.actualPrice - product.price} on this purchase`}</span>
                         </div>
                         <div className={styles.description}>
                             {(product.description || [].map(item=>{

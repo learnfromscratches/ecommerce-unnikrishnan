@@ -112,4 +112,5 @@ export const mockData = [
     ],
     brand: "Sony",
   },
+  
 ];

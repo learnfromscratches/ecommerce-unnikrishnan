@@ -21,8 +21,11 @@
     margin-top: 20px;
 }
 .priceDetails span{
-    font-size: 20px;
+    font-size: 18px;
     font-family: pt-sans-caption, sans-serif;
+}
+.priceDetails span:nth-child(3){
+    font-size: 13px !important;
 }
 .priceDetails{
     margin-top: 20px;
