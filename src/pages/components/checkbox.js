@@ -3,7 +3,7 @@ import styles from "./checkbox.module.css";
 
 const CustomCheckbox = props => {
   return (
-    <div className={styles.customCheckbox}>
+    <div className={styles.customCheckbox} onChange={e=>{props.onCheckboxClick(e,props.label)}}>
       <Checkbox />
       <p>{props.label}</p>
     </div>
