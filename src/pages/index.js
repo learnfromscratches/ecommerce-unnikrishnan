@@ -4,35 +4,41 @@ import Chips from './components/chips'
 import Product from './components/product'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import instance from '../utils/axios'
 
 export default function Home() {
 
   const [product, setProduct] = useState([])
+  const [category, setCategory] = useState([])
 
   const fetchApi = async () => {
-    const result = await fetch("/api/product")
-    const convertedResult = await result.json()
-    setProduct(convertedResult)
+    const productData = await instance.get("/product")
+    const product = productData.data.data;
+    setProduct(product)
   }
 
-  useEffect(() => { fetchApi() }, [])
-
-  const onChipClick = async name => {
-    if (name == "All") {
-      const products = await fetch(`/api/product`);
-      const convertedProducts = await products.json();
-      setProduct(convertedProducts);
-    } else {
-      const products = await fetch(`/api/product?category=${name}`);
-      const convertedProducts = await products.json();
-      setProduct(convertedProducts);
-    }
+  const fetchCategoryApi =async () =>{
+    const categoryData = await instance.get('/category')
+    console.log(categoryData.data )
+    setCategory(categoryData.data)
   }
 
-    const chips = ["All","Mobile phone", "Laptop", "Sports sh", "Men's clothing", "Women's clothing"]
-    // const products = [{ Brand: "Apple", Category: "Mobile phone", name: "Iphone 14 pro max", price: 102300, image: "/images/mobile.jpeg" },
-    // { Brand: "Asus", category: "Laptop", name: "ASUS Vivobook 16X (2022)", price: 47990, image: "/images/asus.jpg" }]
+  useEffect(() => { fetchApi()
+     fetchCategoryApi() }, [])
 
+  const onChipClick = async id => {
+    console.log(id)
+    // if (name == "All") {
+    //   const products = await instance.get(`/product`);
+    //   const convertedProducts = await products.json();
+    //   setProduct(convertedProducts);
+    // } else {
+      const products = await instance.get(`/product?category=${id}`);
+      console.log(products.data.data)
+      // const convertedProducts = await products.json();
+      setProduct(products.data.data);
+    // }
+  }
     return (
       <div className={styles.home}>
         <UserNavbar currentPage="home" />
@@ -42,17 +48,17 @@ export default function Home() {
         <div className={styles.homeCategory}>
           <h3>Shop by category</h3>
           <div className={styles.categoryChip}>
-            {chips.map(item => {
+            {category.map((item,index) => {
               return (
-                <Chips chipsClass={"chips"} onClick={onChipClick} text={item} />
+                <Chips key = {index} id={item._id} chipsClass={"chips"} onClick={onChipClick} text={item.name}/>
               )
             })}
           </div>
         </div>
         <div className={styles.products}>
-          {product.map(item => {
+          {product.map((item,index) => {
             return (
-              <Product {...item} />
+              <Product key = {index} {...item} />
             )
           })}
         </div>

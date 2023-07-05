@@ -59,19 +59,19 @@ export const mockData = [
     price: 1200,
     actualPrice: 1730,
     description: ["Store in a clean and dry environment, avoid contact with water & perfume",
-                  "6-month warranty against manufacturing defects",
-                  "Dimensions: 8 cm x 6 cm x 2 cm",
-                  "Package contains: 1 bag"
-  ],
-      category: "Handbags",
-      thumbnailImage:
+      "6-month warranty against manufacturing defects",
+      "Dimensions: 8 cm x 6 cm x 2 cm",
+      "Package contains: 1 bag"
+    ],
+    category: "Handbags",
+    thumbnailImage:
       "https://assets.ajio.com/medias/sys_master/root/20230426/67xZ/64494293d55b7d0c6380a228/-473Wx593H-469264010-black-MODEL.jpg",
-      image: [
-        "https://assets.ajio.com/medias/sys_master/root/20230426/67xZ/64494293d55b7d0c6380a228/-473Wx593H-469264010-black-MODEL.jpg",
-        "https://assets.ajio.com/medias/sys_master/root/20230426/mUHV/644937cb42f9e729d7516dff/-473Wx593H-469264010-black-MODEL4.jpg",
-        "https://assets.ajio.com/medias/sys_master/root/20230426/7jIq/6449404dd55b7d0c6380939b/-473Wx593H-469264010-black-MODEL5.jpg",
-      ],
-      brand: "Calvin Klein",
+    image: [
+      "https://assets.ajio.com/medias/sys_master/root/20230426/67xZ/64494293d55b7d0c6380a228/-473Wx593H-469264010-black-MODEL.jpg",
+      "https://assets.ajio.com/medias/sys_master/root/20230426/mUHV/644937cb42f9e729d7516dff/-473Wx593H-469264010-black-MODEL4.jpg",
+      "https://assets.ajio.com/medias/sys_master/root/20230426/7jIq/6449404dd55b7d0c6380939b/-473Wx593H-469264010-black-MODEL5.jpg",
+    ],
+    brand: "Calvin Klein",
   },
   {
     id: 5,
@@ -112,5 +112,42 @@ export const mockData = [
     ],
     brand: "Sony",
   },
-  
+  {
+    id: 7,
+    title:
+      "Anouk Women Red & WhiteGeometric Printed Pure Cotton Fit And Flare Midi Dress",
+    price: 543,
+    actualPrice: 1699,
+    description: ["Red and white geometric print fit & flare dress",
+      "Three-quarter, regular sleeves",
+      "Gathered or pleated detail",
+      "Midi length in flared hem"],
+    category: "Women's clothing",
+    thumbnailImage:
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19050226/2022/10/28/3e208376-b98d-4eaa-8d00-68c9badadffa1666951667421-Anouk-Women-Dresses-7821666951666882-1.jpg",
+    image: [
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19050226/2022/10/28/3e208376-b98d-4eaa-8d00-68c9badadffa1666951667421-Anouk-Women-Dresses-7821666951666882-1.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19050226/2022/10/28/664afad2-2920-44d2-8935-df35163eb8491666951667411-Anouk-Women-Dresses-7821666951666882-2.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/19050226/2022/10/28/3ebdbd69-0ac6-40dc-a514-0e408e9c6e111666951667401-Anouk-Women-Dresses-7821666951666882-3.jpg",
+    ],
+    brand: "Anouk",
+  },
+  {
+    id: 8,
+    title:
+      "Kook N Keech Women Printed Slip-On Sneakers",
+    price: 519,
+    actualPrice: 1299,
+    description: ["A pair of round toe blue and red slip-on sneakers, has regular styling,","Slip-on detail","Synthetic printed upper",
+      "Cushioned footbed","Textured and patterned outsole","Upper material: Synthetic","Warranty provided by Brand Owner / Manufacturer"],
+    category: "Casual Shoes",
+    thumbnailImage:
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18039750/2023/3/13/41b233dd-d5ad-4304-b183-c3c0f3b3dfa41678703242049KookNKeechWomenPrintedSlip-OnSneakers1.jpg",
+    image: [
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18039750/2023/3/13/41b233dd-d5ad-4304-b183-c3c0f3b3dfa41678703242049KookNKeechWomenPrintedSlip-OnSneakers1.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18039750/2023/3/13/08745b3b-b522-4e0d-b4b1-58f4e4676bc51678703242062KookNKeechWomenPrintedSlip-OnSneakers2.jpg",
+      "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/18039750/2023/3/13/a143e430-0c2c-4d14-aef8-16bd649e45ba1678703242105KookNKeechWomenPrintedSlip-OnSneakers6.jpg",
+    ],
+    brand: "Kook N Keech",
+  },
 ];

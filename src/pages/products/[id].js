@@ -7,6 +7,8 @@ import { UilShoppingBag } from '@iconscout/react-unicons'
 import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
 import ImageViewer from "../components/imageviewer";
+import instance from "@/utils/axios";
+import { getUser } from "@/utils";
 
 const ProductView = () => {
     const router = useRouter();
@@ -15,15 +17,20 @@ const ProductView = () => {
   
     const getProductFromApi = async () => {
       if (id) {
-        const product = await fetch(`http://localhost:3000/api/product/${id}`);
-        const jsonProduct = await product.json();
-        setProduct(jsonProduct);
+        console.log(router.query)
+        const product = await instance.get(`/product/${id}`);
+        setProduct(product.data);
+        console.log(product.data)
       }
     };
   
     useEffect(() => {
       getProductFromApi();
     }, [id]);
+
+    const addToCArt = async() =>{
+        await instance.patch(`/cart/${getUser()}`,{product : product})
+    }
   
     return (
         <div>
@@ -31,19 +38,19 @@ const ProductView = () => {
             <div className={styles.mainView}>
                 <div className={styles.imageViewer}>
                     {/* <Image src="/images/macbook_2020.jpg" width={400} height={400} /> */}
-                    <ImageViewer thumbnailImage={product.thumbnailImage} imgArray={product.image}/>
+                    <ImageViewer thumbnailImage={product.mainImage} imgArray={product.images}/>
                 </div>
                 <div className={styles.productDesc}>
                     <div className={styles.productDetails}>
                         <h3 className="">{product.title}</h3>
                         <div className={styles.category}>
-                            <Chips chipsClass="productInfo" text={product.category}/>
+                            <Chips chipsClass="productInfo" text={product.category && product.category.name}/>
                             <Chips chipsClass="productInfo" text={product.brand}/>
                         </div>
                         <div className={styles.priceDetails}>
-                            <span className={styles.salesPrice}>{product.price}</span>
-                            <span className={styles.actualPrice}>{product.actualPrice}</span>
-                            <span className={styles.discount}>{`Save ₹${product.actualPrice - product.price} on this purchase`}</span>
+                            <span className={styles.salesPrice}>{product.priceAfterDiscount}</span>
+                            <span className={styles.actualPrice}>{product.price}</span>
+                            <span className={styles.discount}>{`Save ₹${product.price - product.priceAfterDiscount} on this purchase`}</span>
                         </div>
                         <div className={styles.description}>
                             {(product.description || [].map(item=>{
@@ -52,7 +59,7 @@ const ProductView = () => {
                         </div>
                         <div className={styles.userAction}>
                             <Button btnCls="buyNow" text = "Buy now" icon ={<UilShoppingBag/>}/>
-                            <Button btnCls="addToCArt" text="Add to Cart"/>
+                            <Button btnCls="addToCArt" text="Add to Cart" onClick = {()=>addToCArt()}/>
                         </div>
                     </div>
                 </div>

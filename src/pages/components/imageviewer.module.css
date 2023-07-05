@@ -12,9 +12,10 @@
     width: 100%;
 }
 .singleImage img{
-    width: 30%;
+    width: 25%;
     cursor: pointer;
-    height: 130px;
+    height: 80px;
+    margin: 0 4px;
     object-fit: contain;
 }
 .singleImage img:active{

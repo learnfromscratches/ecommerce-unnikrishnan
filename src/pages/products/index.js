@@ -6,55 +6,89 @@ import UserNavbar from "../components/usernavbar"
 import Product from "../components/product";
 import { useState, useEffect } from "react";
 import { buildQuery } from "@/utils";
+import { useRouter } from "next/router";
+import instance from "../../utils/axios";
 
 const Products = () => {
+    const router = useRouter()
 
-    const [products,setProduct] = useState([]);
-    const [brands,setBrands] = useState([])
-    const [categories,setCategory] = useState([])
+    console.log(router.query)
 
-    const fetchApi = async() =>{
-        const result = await fetch("/api/product");
-        const res = await result.json();
-        console.log(res)
-        setProduct(res)
+    const [products, setProduct] = useState([]);
+    const [brands, setBrands] = useState([])
+    const [categories, setCategory] = useState([])
+    const [fetchBrand, setFetchBrand] = useState([])
+    const [categoryData, setCategoryData] = useState([])
+
+    const fetchApi = async () => {
+        const result = await instance.get("/product");
+        // const res = await result.json();
+        console.log(result.data.data)
+        setProduct(result.data.data)
+    }
+    const getProductsFromQuery = async () => {
+        const products = await instance.get(`/product?title=${router.query.search}`)
+        setProduct(products.data.data)
     }
 
-    useEffect(()=>{fetchApi()},[])
+    const fetchBrands = async () => {
+        const fetchBrand = await instance.get('/product')
+        await setFetchBrand(fetchBrand.data.data)
+        console.log("Main result", fetchBrand)
+    }
 
-    const handleBrandCheckbox = (e,label) =>{
-        if(e.target.checked){
-            setBrands([...brands,label])
-            callFilterApi([...brands,label],categories)
+    const fetchCategory = async () => {
+        const category = await instance.get('/category')
+        await setCategoryData(category.data)
+    }
+
+    useEffect(() => {
+        if (router.query.search) {
+            getProductsFromQuery()
+        }
+        else {
+            fetchApi()
+        }
+        fetchBrands()
+        fetchCategory()
+    }, [router.query])
+
+    const handleBrandCheckbox = (e, label) => {
+        if (e.target.checked) {
+            setBrands([...brands, label])
+            callFilterApi([...brands, label], categories)
             // console.log(brands,categories)
         }
-        else{
-            const filteredBrands = brands.filter(item => item!=label)
+        else {
+            const filteredBrands = brands.filter(item => item != label)
             setBrands(filteredBrands)
-            callFilterApi(filteredBrands,categories)
-            console.log(brands,categories)
+            callFilterApi(filteredBrands, categories)
+            console.log(brands, categories)
         }
     }
-    const handleCategoryCheckbox = (e,label) =>{
-        if(e.target.checked){
-            setCategory([...categories,label])
-            setCategory([...categories,label])
-            callFilterApi(brands,[...categories,label])
+    const handleCategoryCheckbox = (e, filter) => {
+        if (e.target.checked) {
+            setCategory([...categories, filter])
+            console.log([...categories, filter])
+            // setCategory([...categories, label])
+            callFilterApi(brands, [...categories, filter])
         }
-        else{
-            const filteredCategories = categories.filter(item => item!=label)
+        else {
+            const filteredCategories = categories.filter(item => item != filter)
             setCategory(filteredCategories)
-            callFilterApi(brands,filteredCategories)
+            callFilterApi(brands, filteredCategories)
         }
     }
-    const callFilterApi = async (brands,categories) =>{
-        let queryBrands = buildQuery("brand",brands);
-        let queryCategory = buildQuery("category",categories)
+    const callFilterApi = async (brands, categories) => {
+        let queryBrands = buildQuery("brand", brands);
+        let queryCategory = buildQuery("category", categories)
         let query = queryBrands + queryCategory;
         console.log(query)
-        const result = await fetch(`http://localhost:3000/api/product?${query}`);
-        const res = await result.json();
-        setProduct(res)
+        const result = await instance.get(`/product?${query}`);
+        console.log("result is", result)
+        // const res = await result.json();
+        setProduct(result.data.data)
+        console.log(products)
     }
     return (
         <div>
@@ -63,23 +97,29 @@ const Products = () => {
                 <div className={styles.filterPane}>
                     <h1>Filters</h1>
                     <h4 className={styles.filterHeading}>Brands</h4>
-                    <CustomCheckbox label="Samsung" onCheckboxClick = {handleBrandCheckbox}/> 
-                    <CustomCheckbox label="Apple" onCheckboxClick = {handleBrandCheckbox}/>
-                    <CustomCheckbox label="Sony" onCheckboxClick = {handleBrandCheckbox} />
-                    <CustomCheckbox label="RealMe" onCheckboxClick = {handleBrandCheckbox} />
+                    {fetchBrand.map((item, index) => {
+                        return (
+                            <CustomCheckbox label={item.brand} filter={item.brand} key={index} onCheckboxClick={handleBrandCheckbox} />
+                        )
+                    })}
+
                     <h4 className={styles.filterHeading}>Category</h4>
-                    <CustomCheckbox label="Mobile phones" onCheckboxClick = {handleCategoryCheckbox}/>
-                    <CustomCheckbox label="Laptop" onCheckboxClick = {handleCategoryCheckbox}/>
-                    <CustomCheckbox label="Watches" onCheckboxClick = {handleCategoryCheckbox}/>
-                    <CustomCheckbox label="Earphones" onCheckboxClick = {handleCategoryCheckbox}/>
+                    {
+                        categoryData.map((item, index) => {
+                            return (
+                                <CustomCheckbox label={item.name} filter={item._id} key={index} onCheckboxClick={handleCategoryCheckbox} />
+                            )
+                        })
+                    }
+
                 </div>
                 <div className={styles.productDisplay}>
                     <h1>Latest products</h1>
                     <SelectSmall />
                     <div className={styles.showProducts}>
-                        {products.map(item => {
+                        {products.map((item, index) => {
                             return (
-                                <Product {...item}/>
+                                <Product key={index} {...item} />
                             )
                         })}
                     </div>

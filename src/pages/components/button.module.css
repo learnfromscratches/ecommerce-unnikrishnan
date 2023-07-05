@@ -28,3 +28,9 @@
     align-items: center;
     justify-content: center;
 }
+.cart{
+    border-radius: 0.1rem;
+    background-color: rgb(224, 43, 43);
+    outline: none;
+    color: #ffffff;
+}

@@ -9,7 +9,7 @@ const ImageViewer = props => {
     return (
         <div className={styles.imageViewer}>
             <div className={styles.thumbnail}>
-                <Image src={image} width={400} height={400} className={styles.image} />
+                <Image src={image} width={400} height={400} alt = "product image" className={styles.image} />
             </div>
             <div className={styles.imageSelector}>
                 <div className={styles.singleImage}>

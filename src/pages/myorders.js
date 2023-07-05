@@ -1,4 +1,5 @@
 import UserNavbar from "./components/usernavbar";
+import withAuth from "@/utils/withAuth";
 
 const MyOrders = () =>{
     return(
@@ -8,4 +9,4 @@ const MyOrders = () =>{
         </div>
     )
 }
-export default MyOrders;
+export default withAuth(MyOrders);

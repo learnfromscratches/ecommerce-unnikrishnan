@@ -1,4 +1,5 @@
 import UserNavbar from "./components/usernavbar";
+import withAuth from "@/utils/withAuth";
 
 const Account = () =>{
     return(
@@ -8,4 +9,4 @@ const Account = () =>{
         </div>
     )
 }
-export default Account;
+export default withAuth(Account);

@@ -1,0 +1,25 @@
+.cart{
+    width: 60%;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 0.6rem;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    /* justify-content: space-around; */
+}
+.imageCol{
+    width: 130px;
+    height: 120px;
+    display: inherit;
+}
+.productDetails{
+    margin-left: 50px;
+}
+.description{
+    width: 400px;
+}
+.options{
+    margin-left: 60px;
+}
