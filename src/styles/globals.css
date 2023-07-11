@@ -13,3 +13,14 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  height: 30px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 0.3rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}

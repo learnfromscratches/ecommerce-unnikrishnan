@@ -3,18 +3,16 @@
     flex-direction: column;
     margin: 10px;
 }
-.textInput{
+.imageInput{
     font-size: 14px;
-    padding: 10px 15px;
-    height: 32px;
+    padding: 20px 15px;
+    height: 75px;
     outline: none;
+    color: green;
 }
 .label{
     margin-bottom: 5px;
 }
 .addproduct{
     width : 250px;
-}
-.imageUpload{
-    background-color: yellow;
 }

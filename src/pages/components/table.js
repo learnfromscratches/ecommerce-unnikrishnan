@@ -6,6 +6,9 @@ export default function DataTable(props) {
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={props.rows}
+        getRowId={row => {
+          return row._id;
+        }}
         columns={props.columns}
         initialState={{
           pagination: {

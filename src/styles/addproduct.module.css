@@ -1,0 +1,9 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding: 0;
+}
